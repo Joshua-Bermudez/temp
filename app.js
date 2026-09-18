@@ -13,7 +13,7 @@ renderer.toneMappingExposure = 1.15;
 const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x0b0d0f, 0.035);
 const camera = new THREE.PerspectiveCamera(32, innerWidth/innerHeight, .01, 100);
-camera.position.set(2.6, 0.95, 4.9);
+camera.position.set(2.6, 1.3, 4.9);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -21,7 +21,7 @@ controls.dampingFactor = .06;
 controls.enablePan = false;
 controls.minDistance = 2.3;
 controls.maxDistance = 7;
-controls.target.set(0,1.5,0);
+controls.target.set(0,0.7,0);
 
 scene.add(new THREE.HemisphereLight(0xddeeea,0x090b0c,2.2));
 const key = new THREE.DirectionalLight(0xffffff,3.2); key.position.set(3,4,5); scene.add(key);
@@ -30,7 +30,7 @@ const fill = new THREE.PointLight(0xd7a884,9,9); fill.position.set(2,-2,-1); sce
 
 let model, mixer, clock = new THREE.Clock();
 const loader = new GLTFLoader();
-loader.load('digestive_System.glb', gltf=>{
+loader.load('assets/digestive_System.glb', gltf=>{
   model=gltf.scene;
   model.traverse(o=>{ if(o.isMesh){o.castShadow=true;o.receiveShadow=true;o.material.roughness=.72;} });
   const box=new THREE.Box3().setFromObject(model), size=box.getSize(new THREE.Vector3()), center=box.getCenter(new THREE.Vector3());
@@ -53,7 +53,7 @@ function goTo(n){
   if(index===0) resetCamera();
 }
 function resetCamera(){
-  camera.position.set(2.6,.95,4.9); controls.target.set(0,1.5,0); controls.update();
+  camera.position.set(2.6,1.3,4.9); controls.target.set(0,.7,0); controls.update();
 }
 
 document.querySelector('#next').onclick=()=>goTo(index+1);
@@ -69,7 +69,7 @@ let wheelLock=false;
 addEventListener('wheel',e=>{if(wheelLock)return; if(Math.abs(e.deltaY)>35){wheelLock=true;goTo(index+(e.deltaY>0?1:-1));setTimeout(()=>wheelLock=false,800)}});
 
 const focusTargets={
-  mouth:[0.3,2.7,3], esophagus:[0.3,2.2,3], stomach:[0,1.5,0], small:[0,1,0.3], large:[0,1,0], rectum:[1,0.6,0]
+  mouth:[0,.65,3.9], esophagus:[.1,.25,3.7], stomach:[.05,-.05,3.5], small:[0,-.15,3.3], large:[0,-.05,3.25], rectum:[0,-.45,3.5]
 };
 document.querySelectorAll('.organ').forEach(btn=>btn.onclick=()=>{
   document.querySelectorAll('.organ').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
@@ -99,7 +99,7 @@ function renderQuiz(){
 }
 renderQuiz();
 
-let sound=false; document.querySelector('#soundBtn').onclick=()=>{sound=!sound;document.querySelector('#soundState').textContent=sound?'ON':'OFF'};
+let sound=false; const soundBtn=document.querySelector('#soundBtn'); if(soundBtn) soundBtn.onclick=()=>{sound=!sound;document.querySelector('#soundState').textContent=sound?'ON':'OFF'};
 
 function animate(){requestAnimationFrame(animate);const dt=clock.getDelta();if(mixer)mixer.update(dt);if(model){model.rotation.y+=0.0018;if(index===0){model.rotation.y+=0.0012;model.position.y=Math.sin(performance.now()*.00055)*.025}else model.position.y=0;}controls.update();renderer.render(scene,camera)}
 animate();
