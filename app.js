@@ -30,7 +30,7 @@ const fill = new THREE.PointLight(0xd7a884,9,9); fill.position.set(2,-2,-1); sce
 
 let model, mixer, clock = new THREE.Clock();
 const loader = new GLTFLoader();
-loader.load('assets/digestive_System.glb', gltf=>{
+loader.load('digestive_System.glb', gltf=>{
   model=gltf.scene;
   model.traverse(o=>{ if(o.isMesh){o.castShadow=true;o.receiveShadow=true;o.material.roughness=.72;} });
   const box=new THREE.Box3().setFromObject(model), size=box.getSize(new THREE.Vector3()), center=box.getCenter(new THREE.Vector3());
