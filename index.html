@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Human Digestive System | Interactive 3D Presentation</title>
+  <meta name="description" content="An interactive Three.js presentation about the human digestive system.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene"></canvas>
+    <div class="text-scrim" aria-hidden="true"></div>
+    <div class="viewer-frame" aria-hidden="true">
+      <span class="vf-corner tl"></span>
+      <span class="vf-corner tr"></span>
+      <span class="vf-corner bl"></span>
+      <span class="vf-corner br"></span>
+      <span class="vf-scan"></span>
+    </div>
+    <div class="grain"></div>
+
+    <header class="topbar">
+      <div class="brand"><span class="brand-dot"></span><span>DIGESTIVE SYSTEM</span></div>
+      <div class="counter"><span id="slideNo">01</span><span class="slash">/</span><span>08</span></div>
+      <button class="sound-btn" id="soundBtn" aria-label="Toggle sound">SOUND <span id="soundState">OFF</span></button>
+    </header>
+
+    <aside class="rail">
+      <button class="rail-item active" data-slide="0"><span>01</span><b>INTRO</b></button>
+      <button class="rail-item" data-slide="1"><span>02</span><b>SYSTEM</b></button>
+      <button class="rail-item" data-slide="2"><span>03</span><b>ANATOMY</b></button>
+      <button class="rail-item" data-slide="3"><span>04</span><b>FUNCTION</b></button>
+      <button class="rail-item" data-slide="4"><span>05</span><b>IMPORTANCE</b></button>
+      <button class="rail-item" data-slide="5"><span>06</span><b>ACTIVITY</b></button>
+      <button class="rail-item" data-slide="6"><span>07</span><b>HEALTH</b></button>
+   
+    </aside>
+
+    <main id="slides">
+      <section class="slide active" data-index="0">
+        <div class="hero-copy">
+          <p class="eyebrow">BIOLOGY / 3D EXPLORATION</p>
+          <h1>THE HUMAN<br><em>DIGESTIVE</em><br>SYSTEM</h1>
+          <p class="lede">A visual journey through the organs, functions and everyday habits that keep digestion moving.</p>
+          <button class="primary" data-next>ENTER THE SYSTEM <span>↗</span></button>
+        </div>
+        <div class="viewer-caption"><span>3D</span> LIVE MODEL — DRAG TO ROTATE, SCROLL TO ZOOM</div>
+      </section>
+
+      <section class="slide" data-index="1">
+        <div class="content left">
+          <p class="eyebrow">02 / EXPLAIN THE SYSTEM</p>
+          <h2>One connected<br><em>pathway.</em></h2>
+          <p>The digestive system is a group of organs that work together to break down food into nutrients the body can absorb and use for energy.</p>
+          <div class="organ-list">
+            <button class="organ active" data-focus="mouth"><span>01</span>Mouth</button>
+            <button class="organ" data-focus="esophagus"><span>02</span>Esophagus</button>
+            <button class="organ" data-focus="stomach"><span>03</span>Stomach</button>
+            <button class="organ" data-focus="small"><span>04</span>Small Intestine</button>
+            <button class="organ" data-focus="large"><span>05</span>Large Intestine</button>
+            <button class="organ" data-focus="rectum"><span>06</span>Rectum + Anus</button>
+          </div>
+        </div>
+        <div class="viewer-caption">SELECT AN ORGAN TO SHIFT THE CAMERA</div>
+      </section>
+
+      <section class="slide" data-index="2">
+        <div class="content full">
+          <p class="eyebrow">03 / ANATOMY MAP</p>
+          <h2>Follow the<br><em>route.</em></h2>
+          <div class="route-grid">
+            <div class="route-card"><span>01</span><strong>MOUTH</strong><small>Food enters and chewing begins.</small></div>
+            <div class="route-card"><span>02</span><strong>ESOPHAGUS</strong><small>Moves swallowed food toward the stomach.</small></div>
+            <div class="route-card"><span>03</span><strong>STOMACH</strong><small>Mixes food and continues digestion.</small></div>
+            <div class="route-card"><span>04</span><strong>SMALL INTESTINE</strong><small>Most nutrient absorption occurs here.</small></div>
+            <div class="route-card"><span>05</span><strong>LARGE INTESTINE</strong><small>Helps absorb water and forms waste.</small></div>
+            <div class="route-card"><span>06</span><strong>RECTUM + ANUS</strong><small>Stores and eliminates waste.</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-index="3">
+        <div class="content full">
+          <p class="eyebrow">04 / DESCRIBE THE FUNCTION</p>
+          <h2>From food<br>to <em>fuel.</em></h2>
+          <p class="wide">The main function is to digest food and absorb nutrients. Chewing breaks food into smaller pieces, then digestion continues as food travels through the system.</p>
+          <div class="process">
+            <div><span>01</span><strong>CHEW</strong><small>Break food into smaller pieces.</small></div>
+            <i>→</i>
+            <div><span>02</span><strong>DIGEST</strong><small>Break molecules down further.</small></div>
+            <i>→</i>
+            <div><span>03</span><strong>ABSORB</strong><small>Move useful nutrients into the body.</small></div>
+            <i>→</i>
+            <div><span>04</span><strong>USE</strong><small>Support energy, growth and repair.</small></div>
+          </div>
+          <div class="nutrients">
+            <div><b>CARBOHYDRATES</b><span>ENERGY</span></div>
+            <div><b>PROTEINS</b><span>GROWTH + REPAIR</span></div>
+            <div><b>FATS</b><span>ENERGY + CELL FUNCTIONS</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-index="4">
+        <div class="content left">
+          <p class="eyebrow">05 / IMPORTANCE</p>
+          <h2>Healthy input.<br>Healthy <em>output.</em></h2>
+          <p>Your body needs nutrients to produce energy, grow, repair tissues and maintain normal body functions.</p>
+          <div class="symptoms">
+            <div><b>DIARRHEA</b><small>Loose or frequent stools.</small></div>
+            <div><b>STOMACH PAIN</b><small>Discomfort in the abdomen.</small></div>
+            <div><b>BLOATING</b><small>A feeling of fullness or swelling.</small></div>
+            <div><b>POOR ABSORPTION</b><small>The body does not take in enough nutrients.</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-index="5">
+        <div class="content full">
+          <p class="eyebrow">06 / EXERCISE OR ACTIVITY</p>
+          <h2>Move with<br>the <em>system.</em></h2>
+          <p class="wide">Physical activity can support normal movement of the digestive system and contribute to overall health.</p>
+          <div class="activity-grid">
+            <button class="activity" data-activity="Walking"><span>01</span><b>WALKING</b><small>Simple, accessible movement.</small></button>
+            <button class="activity" data-activity="Cycling"><span>02</span><b>CYCLING</b><small>Steady aerobic activity.</small></button>
+            <button class="activity" data-activity="Yoga and stretching"><span>03</span><b>YOGA + STRETCHING</b><small>Gentle movement and flexibility.</small></button>
+            <button class="activity" data-activity="Jogging"><span>04</span><b>JOGGING</b><small>More vigorous aerobic movement.</small></button>
+          </div>
+          <div id="activityPulse" class="pulse-note">SELECT AN ACTIVITY</div>
+        </div>
+      </section>
+
+      <section class="slide" data-index="6">
+        <div class="content full">
+          <p class="eyebrow">07 / HEALTHY LIFESTYLE</p>
+          <h2>Build the<br><em>routine.</em></h2>
+          <div class="health-grid">
+            <button class="health" data-tip="Balanced diet"><span>01</span><b>BALANCED DIET</b><small>Fruits, vegetables, whole grains and other nutritious foods.</small></button>
+            <button class="health" data-tip="Hydration"><span>02</span><b>HYDRATE</b><small>Drink enough water daily.</small></button>
+            <button class="health" data-tip="Regular meals"><span>03</span><b>EAT REGULARLY</b><small>Avoid frequently skipping meals.</small></button>
+            <button class="health" data-tip="Fiber"><span>04</span><b>GET ENOUGH FIBER</b><small>Fiber supports healthy digestion.</small></button>
+            <button class="health" data-tip="Movement"><span>05</span><b>STAY ACTIVE</b><small>Exercise regularly or simply walk.</small></button>
+            <button class="health" data-tip="Sleep and triggers"><span>06</span><b>SLEEP + NOTICE TRIGGERS</b><small>Rest properly and limit foods that repeatedly cause discomfort.</small></button>
+          </div>
+          <div id="healthToast" class="toast">A healthy digestive system is supported by a pattern of habits.</div>
+        </div>
+      </section>
+
+      <section class="slide" data-index="7">
+        <div class="content quiz-content">
+          <p class="eyebrow"></p>
+          <div id="quiz"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="controls">
+      <button id="prev">← PREV</button>
+      <div class="progress"><span id="progressBar"></span></div>
+      <button id="next">NEXT →</button>
+      <div class="hint">SPACE / ARROWS TO NAVIGATE</div>
+    </footer>
+  </div>
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
