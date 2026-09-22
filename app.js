@@ -53,7 +53,7 @@ function goTo(n){
   if(index===0) resetCamera();
 }
 function resetCamera(){
-  camera.position.set(2.6,1.3,4.9); controls.target.set(0,1,0); controls.update();
+  camera.position.set(2.6,1.3,4.9); controls.target.set(0,0.5,0); controls.update();
 }
 
 document.querySelector('#next').onclick=()=>goTo(index+1);
