@@ -21,7 +21,7 @@ controls.dampingFactor = .06;
 controls.enablePan = false;
 controls.minDistance = 2.3;
 controls.maxDistance = 7;
-controls.target.set(0,0.7,0);
+controls.target.set(0,1,0);
 
 scene.add(new THREE.HemisphereLight(0xddeeea,0x090b0c,2.2));
 const key = new THREE.DirectionalLight(0xffffff,3.2); key.position.set(3,4,5); scene.add(key);
